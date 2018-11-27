@@ -1,0 +1,4 @@
+Left joy: drive
+Right bumper: slow (hold)
+x button: reverse (toggle)
+left bumper: slowturn override (hold)

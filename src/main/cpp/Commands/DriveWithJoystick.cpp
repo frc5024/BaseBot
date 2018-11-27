@@ -23,14 +23,24 @@ void DriveWithJoystick::Initialize() {
 void DriveWithJoystick::Execute() {
   // Deal with reversing and slow mode
 	this->directionMultiplier *= (this->pJoyDrive->GetXButtonReleased())? -1 : 1;
-  this->speedMultiplier = (this->pJoyDrive->GetBumper(XboxController::kRightHand)) ? 0.5 : 1;
+  this->speedMultiplier      = (this->pJoyDrive->GetBumper(XboxController::kRightHand)) ? 0.5 : 1;
 
   // Get movement data form controller
   this->speed    = pJoyDrive->GetY(XboxController::kLeftHand) * -1;
 	this->rotation = pJoyDrive->GetX(XboxController::kLeftHand);
-
-  this->speed    = (this->speed * this->speedMultiplier * this->directionMultiplier);
+	
+	// Calculate speed and rotation
+  this->speed    = (this->speed    * this->speedMultiplier * this->directionMultiplier);
   this->rotation = (this->rotation * this->speedMultiplier);
+  
+  // Enforce turning limits
+  if (!this->pJoyDrive->GetBumper(XboxController::kLeftHand)){ // If not override
+  	if(this->roataion > DRIVEWITHJOYSTICK_ROATATION_LIMITER){
+  		this->rotation = DRIVEWITHJOYSTICK_ROATATION_LIMITER;
+  	}else if(this->rotation < -DRIVEWITHJOYSTICK_ROATATION_LIMITER){
+  		this->rotation = -DRIVEWITHJOYSTICK_ROATATION_LIMITER;
+  	}
+  }
 
   Robot::m_DriveTrain->ArcadeDrive(this->speed, this->rotation);
 }
