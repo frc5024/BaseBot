@@ -35,7 +35,8 @@ void DriveWithJoystick::Execute() {
 	// Calculate Force and Curve with multipliers
   this->force = (this->force * this->speedMultiplier * this->directionMultiplier);
   this->curve = (this->curve * this->speedMultiplier);
-
+	
+	// Use RaiderDrive to make the robot "More Better"
   Robot::m_DriveTrain->RaiderDrive(this->force, this->curve, this->isQuickTurn);
 }
 

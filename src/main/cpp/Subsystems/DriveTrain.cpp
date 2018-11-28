@@ -53,7 +53,6 @@ void DriveTrain::TankDrive(double leftSpeed, double rightSpeed) {
 // in quick turn mode, do normal arcade drive
 // in normal mode, do tank drive
 void RaiderDrive(double force, double curve, bool isQuickTurn){
-	
 	// Calculate turning-only speeds
 	this->rd_RightSpeed = (curve >= 0.0)? -curve :  curve;
 	this->rd_LeftSpeed  = (curve >= 0.0)?  curve : -curve;
@@ -61,7 +60,6 @@ void RaiderDrive(double force, double curve, bool isQuickTurn){
 	// Calculate force on top of turning speeds
 	this->rd_RightSpeed += force;
 	this->rd_LeftSpeed  += force;
-	
 	
 	// Send data to motors
 	if(isQuickTurn){
