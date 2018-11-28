@@ -19,14 +19,14 @@ class DriveTrain : public frc::Subsystem {
 
  private:
   can::WPI_TalonSRX* pLeftFrontMotor;
-	can::WPI_TalonSRX* pLeftRearMotor;
-	can::WPI_TalonSRX* pRightFrontMotor;
-	can::WPI_TalonSRX* pRightRearMotor;
+  can::WPI_TalonSRX* pLeftRearMotor;
+  can::WPI_TalonSRX* pRightFrontMotor;
+  can::WPI_TalonSRX* pRightRearMotor;
 
 	frc::DifferentialDrive* pRobotDrive;
-	
-	double rd_LeftSpeed;
-	double rd_RightSpeed;
+
+	double rd_LeftSpeed  = 0.0;
+	double rd_RightSpeed = 0.0;
 };
 
 #endif // _DRIVETRAIN_HG_

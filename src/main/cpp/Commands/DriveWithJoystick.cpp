@@ -15,8 +15,8 @@ void DriveWithJoystick::Initialize() {
   this->speedMultiplier     = 1;
 
   //set Speed and Rotation
-  this->speed    = 0.0;
-  this->rotation = 0.0;
+  this->force    = 0.0;
+  this->curve = 0.0;
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -29,8 +29,8 @@ void DriveWithJoystick::Execute() {
   this->isQuickTurn = this->pJoyDrive->GetBumper(XboxController::kLeftHand);
 
   // Get movement data form controller
-  this->force = pJoyDrive->GetY(XboxController::kLeftHand) * -1;
-	this->curve = pJoyDrive->GetX(XboxController::kLeftHand);
+  this->force = pJoyDrive->GetX(XboxController::kLeftHand);
+	this->curve = pJoyDrive->GetY(XboxController::kLeftHand) * -1;
 
 	// Calculate Force and Curve with multipliers
   this->force = (this->force * this->speedMultiplier * this->directionMultiplier);
