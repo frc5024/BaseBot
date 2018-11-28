@@ -13,11 +13,14 @@ class DriveWithJoystick : public frc::Command {
   void End() override;
   void Interrupted() override;
 private:
-int directionMultiplier;
+// Multipliers
+int    directionMultiplier;
 double speedMultiplier;
 
-double speed;
-double rotation;
+double force;
+double curve;
+
+bool isQuickTurn;
 
 frc::XboxController* pJoyDrive;
 };

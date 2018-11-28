@@ -15,6 +15,7 @@ class DriveTrain : public frc::Subsystem {
 
   void ArcadeDrive(double xSpeed, double zRotation);
 	void TankDrive(double leftSpeed, double rightSpeed);
+	void RaiderDrive(double force, double curve, bool isQuickTurn);
 
  private:
   can::WPI_TalonSRX* pLeftFrontMotor;
@@ -23,6 +24,9 @@ class DriveTrain : public frc::Subsystem {
 	can::WPI_TalonSRX* pRightRearMotor;
 
 	frc::DifferentialDrive* pRobotDrive;
+	
+	double rd_LeftSpeed;
+	double rd_RightSpeed;
 };
 
 #endif // _DRIVETRAIN_HG_

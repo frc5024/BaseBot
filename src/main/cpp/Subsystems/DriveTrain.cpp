@@ -30,6 +30,10 @@ DriveTrain::DriveTrain() : frc::Subsystem("DriveTrain") {
 	this->pRightFrontMotor->SetSafetyEnabled(false);
 	this->pRightRearMotor->SetSafetyEnabled(false);
 	this->pRobotDrive->SetSafetyEnabled(false);
+	
+	// Init the RaiderDrive vars
+	this->rd_RightSpeed = 0.00;
+	this->rd_LeftSpeed  = 0.00;
 }
 
 void DriveTrain::InitDefaultCommand() {
@@ -44,4 +48,28 @@ void DriveTrain::ArcadeDrive(double xSpeed, double zRotation) {
 void DriveTrain::TankDrive(double leftSpeed, double rightSpeed) {
 	this->pRobotDrive->TankDrive(leftSpeed, rightSpeed);
 	return;
+}
+
+// in quick turn mode, do normal arcade drive
+// in normal mode, do tank drive
+void RaiderDrive(double force, double curve, bool isQuickTurn){
+	
+	// Calculate turning-only speeds
+	this->rd_RightSpeed = (curve >= 0.0)? -curve :  curve;
+	this->rd_LeftSpeed  = (curve >= 0.0)?  curve : -curve;
+	
+	// Calculate force on top of turning speeds
+	this->rd_RightSpeed += force;
+	this->rd_LeftSpeed  += force;
+	
+	
+	// Send data to motors
+	if(isQuickTurn){
+		// Just send raw force and curve to ArcadeDrive
+		// The function handles the rest
+		this->pRobotDrive->ArcadeDrive(force, curve);
+	}else{
+		// Send motor data to TankDrive to handle the rest
+		this->pRobotDrive->TankDrive(this->rd_RightSpeed, this->rd_LeftSpeed)
+	}
 }

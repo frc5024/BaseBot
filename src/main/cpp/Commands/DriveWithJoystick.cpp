@@ -23,16 +23,20 @@ void DriveWithJoystick::Initialize() {
 void DriveWithJoystick::Execute() {
   // Deal with reversing and slow mode
 	this->directionMultiplier *= (this->pJoyDrive->GetXButtonReleased())? -1 : 1;
-  this->speedMultiplier = (this->pJoyDrive->GetBumper(XboxController::kRightHand)) ? 0.5 : 1;
+  this->speedMultiplier      = (this->pJoyDrive->GetBumper(XboxController::kRightHand)) ? SLOWMODE_MULTIPLIER : 1;
+  
+  // Check if QuickTurn is to be enabled
+  this->isQuickTurn = this->pJoyDrive->GetBumper(XboxController::kLeftHand);
 
   // Get movement data form controller
-  this->speed    = pJoyDrive->GetY(XboxController::kLeftHand) * -1;
-	this->rotation = pJoyDrive->GetX(XboxController::kLeftHand);
+  this->force = pJoyDrive->GetY(XboxController::kLeftHand) * -1;
+	this->curve = pJoyDrive->GetX(XboxController::kLeftHand);
 
-  this->speed    = (this->speed * this->speedMultiplier * this->directionMultiplier);
-  this->rotation = (this->rotation * this->speedMultiplier);
+	// Calculate Force and Curve with multipliers
+  this->force = (this->force * this->speedMultiplier * this->directionMultiplier);
+  this->curve = (this->curve * this->speedMultiplier);
 
-  Robot::m_DriveTrain->ArcadeDrive(this->speed, this->rotation);
+  Robot::m_DriveTrain->RaiderDrive(this->force, this->curve, this->isQuickTurn);
 }
 
 // Make this return true when this Command no longer needs to run execute()
