@@ -22,6 +22,15 @@
 #define DRIVETRAIN_RIGHT_FRONT_MOTOR_INVERT true
 #define DRIVETRAIN_RIGHT_REAR_MOTOR_INVERT  true
 
+// Motion Profiling
+#define MP_TIME_STEP        0.001 // Time step
+#define MP_MAX_VELOCITY     15.0  // m/s
+#define MP_MAX_ACCELERATION 10.0  // m/s/s
+#define MP_MAX_JERK         60.0  // m/s/s/s
+
+// Robot Mesurments
+#define WHEELBASE_WIDTH 0.6 // The distance between the left and right sides of the wheelbase in meters
+
 // Xbox controllers
 #define XBOX_CONTROLLER_DRIVE_PORT    0
 #define XBOX_CONTROLLER_OPERATOR_PORT 1
