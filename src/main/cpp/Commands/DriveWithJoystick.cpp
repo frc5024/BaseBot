@@ -22,6 +22,7 @@ void DriveWithJoystick::Initialize() {
   this->rotation = 0.0;
 }
 
+
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute() {
   // Deal with reversing and slow mode
@@ -37,8 +38,8 @@ void DriveWithJoystick::Execute() {
 	
   //get speed and angle from networktables
   if(vision) {
-	  this->speed = table->GetNumber("DistanceToCube",0.00) / 100);
-	  this->rotation = table->GetNumber("AngleToCube,0.00) / 100);
+	  this->speed = table->GetNumber("DistanceToCube",0.0) / 100;
+	  this->rotation = table->GetNumber("AngleToCube",0.0) / 100;
   }	
 
   Robot::m_DriveTrain->ArcadeDrive(this->speed, this->rotation);

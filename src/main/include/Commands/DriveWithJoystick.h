@@ -10,6 +10,7 @@ class DriveWithJoystick : public frc::Command {
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
+  std::shared_ptr<NetworkTable> table;
   void End() override;
   void Interrupted() override;
 private:
