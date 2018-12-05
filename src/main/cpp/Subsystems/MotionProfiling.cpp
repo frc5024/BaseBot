@@ -1,9 +1,6 @@
 #include "Subsystems/MotionProfiling.h"
 
-
-MotionProfiling::MotionProfiling() : frc::Subsystem("MotionProfiling") {
-  
-}
+MotionProfiling::MotionProfiling() : frc::Subsystem("MotionProfiling") {  }
 
 void MotionProfiling::InitDefaultCommand() {
   // SetDefaultCommand(new DriveWithJoystick());
