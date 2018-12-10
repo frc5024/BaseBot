@@ -62,7 +62,7 @@ void DriveWithJoystick::Execute() {
   this->rotation *= (this->speedMultiplier * DRIVEWITHJOYSTICK_ROTATION_LIMITER);
 
     if(useVision) {
-	      this->speed = table->GetNumber("DistanceToCube",0.0) / 100;
+	      this->speed = (table->GetNumber("DistanceToCube",0.0) / 100) *-1;
 	      this->rotation = table->GetNumber("AngleToCube",0.0) / 100;
   }	
 
