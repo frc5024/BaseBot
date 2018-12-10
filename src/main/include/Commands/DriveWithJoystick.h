@@ -11,7 +11,7 @@ class DriveWithJoystick : public frc::Command {
   DriveWithJoystick();        //!< Class constructor
   void Initialize() override; //!< Runs once on initalization
   void Execute() override;    //!< Called in a loop during Teleop
-  
+  std::shared_ptr<NetworkTable> table;
   /**
    * Used to tell wpilib if the command is fully finished. This should never return true
    * Because we always want to be able to drive the bot during teleop
