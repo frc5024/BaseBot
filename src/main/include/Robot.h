@@ -30,6 +30,22 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;         //!< Runs once at the start of teleop when the bell sounds
   void TeleopPeriodic() override;     //!< Runs in a loop during teleop
   void TestPeriodic() override;       //!< Runs in a loop during test mode
+  
+  // Period control
+  /**
+   * Used to set the amount of time between each cycle of the periodic functions.
+   * WARNING: Anything below 0.01 will cause the motor controllers to stop working correctly in some cases
+   *
+   * @param seconds Time gap between cycles in seconds
+   */
+  void SetCycleTime(double seconds);
+  
+  /**
+   * Get the current cycle time
+   *
+   * @return Current time gap between cycles in seconds
+   */
+  double GetCycleTime();
 
  private:
   // Have it null by default so that if testing teleop it
@@ -38,6 +54,8 @@ class Robot : public frc::TimedRobot {
   // DriveWithJoystick m_defaultAuto;
   // MyAutoCommand m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;
+  
+  double cycleTime = 0.02;
 };
 
 #endif //_ROBOT_HG_

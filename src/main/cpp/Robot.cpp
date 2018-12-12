@@ -29,7 +29,7 @@ void Robot::RobotInit() {
 
   // Set robot loop speed (in seconds)
   std::cout << "Setting Period Time.." << std::endl;
-  this->SetPeriod(0.01);
+  this->SetPeriod(this->cycleTime);
 }
 
 /**
@@ -98,6 +98,28 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::TestPeriodic() {}
+
+ // Cycle timing:
+void SetCycleTime(double seconds){
+	// Overwrite the current cycle time
+	this->cycleTime = seconds;
+	// Call WPILib's SetPeriod function to do the work for us
+	this->SetPeriod(this->cycleTime);
+	
+	// Warn if the time has been set to something dumb
+	if(seconds < 0.01){
+		std::cout << "WARNING: The cycle time has been set too low." <<std::endl;
+	}
+	
+	if(seconds >0.8){
+		std::cout << "WARNING: The cycle time has been set too high." <<std::endl;
+	}
+}
+ 
+double GetCycleTime(){
+	// Return the current cycle time
+	return this->cycleTime;
+}
 
 #ifndef RUNNING_FRC_TESTS
 	WinGame(Robot)
