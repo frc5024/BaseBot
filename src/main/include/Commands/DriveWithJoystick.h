@@ -24,11 +24,11 @@ class DriveWithJoystick : public frc::Command {
   void Interrupted() override; //!< Runs once if the command is forced to stop
   
 private:
-	int directionMultiplier; //!< Can be 1 or -1. Determines the direction the the robot moves in
-	double speedMultiplier;  //!< The speed of the robot is multiplied by this number. Used for slowmode
+	signed int directionMultiplier; //!< Can be 1 or -1. Determines the direction the the robot moves in
+	unsigned double speedMultiplier;  //!< The speed of the robot is multiplied by this number. Used for slowmode
 	
-	double speed;    //!< Speed value that will be passed into DriveTrain::ArcadeDrive
-	double rotation; //!< Rotation value that will be passed into DriveTrain::ArcadeDrive
+	signed double speed;    //!< Speed value that will be passed into DriveTrain::ArcadeDrive
+	signed double rotation; //!< Rotation value that will be passed into DriveTrain::ArcadeDrive
 	
 	bool inline getTriggers(); //!< Called only if the drivemode is set to 1
 	
@@ -38,7 +38,7 @@ private:
 	 * 0 = Joystick
 	 * 1 = Triggers
 	 */
-	int driveMode; //!< Used to keep track of the drive mode
+	unsigned int driveMode; //!< Used to keep track of the drive mode
 	
 	frc::XboxController* pJoyDrive; //!< A mnemonic for the driver's controller because we are lazy
 };
