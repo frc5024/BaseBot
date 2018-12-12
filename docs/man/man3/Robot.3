@@ -50,6 +50,12 @@ Inherits TimedRobot\&.
 .RI "void \fBTestPeriodic\fP () override"
 .br
 .RI "Runs in a loop during test mode\&. "
+.ti -1c
+.RI "void \fBSetCycleTime\fP (double seconds)"
+.br
+.ti -1c
+.RI "double \fBGetCycleTime\fP ()"
+.br
 .in -1c
 .SS "Public Attributes"
 
@@ -76,6 +82,9 @@ Inherits TimedRobot\&.
 .in +1c
 .ti -1c
 .RI "frc::SendableChooser< frc::Command * > \fBm_chooser\fP"
+.br
+.ti -1c
+.RI "double \fBcycleTime\fP = 0\&.02"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -111,6 +120,15 @@ Definition at line 50 of file Robot\&.cpp\&.
 Runs in a loop while the robot is disabled\&. 
 .PP
 Definition at line 52 of file Robot\&.cpp\&.
+.SS "double Robot::GetCycleTime ()"
+Get the current cycle time
+.PP
+\fBReturns:\fP
+.RS 4
+Current time gap between cycles in seconds 
+.RE
+.PP
+
 .SS "void Robot::RobotInit ()\fC [override]\fP"
 
 .PP
@@ -125,6 +143,15 @@ Runs in a loop while the robot is turned on in any mode\&. This function is call
 This runs after the mode specific periodic functions, but before LiveWindow and SmartDashboard integrated updating\&. 
 .PP
 Definition at line 43 of file Robot\&.cpp\&.
+.SS "void Robot::SetCycleTime (double seconds)"
+Used to set the amount of time between each cycle of the periodic functions\&. WARNING: Anything below 0\&.01 will cause the motor controllers to stop working correctly in some cases
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseconds\fP Time gap between cycles in seconds 
+.RE
+.PP
+
 .SS "void Robot::TeleopInit ()\fC [override]\fP"
 
 .PP
@@ -145,10 +172,14 @@ Runs in a loop during test mode\&.
 Definition at line 100 of file Robot\&.cpp\&.
 .SH "Member Data Documentation"
 .PP 
+.SS "double Robot::cycleTime = 0\&.02\fC [private]\fP"
+
+.PP
+Definition at line 58 of file Robot\&.h\&.
 .SS "frc::SendableChooser<frc::Command*> Robot::m_chooser\fC [private]\fP"
 
 .PP
-Definition at line 40 of file Robot\&.h\&.
+Definition at line 56 of file Robot\&.h\&.
 .SS "\fBDriveTrain\fP * Robot::m_DriveTrain\fC [static]\fP"
 
 .PP

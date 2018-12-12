@@ -138,6 +138,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af0ac44a962e609e9b042285e699d1db8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobot.html#af0ac44a962e609e9b042285e699d1db8">TestPeriodic</a> () override</td></tr>
 <tr class="memdesc:af0ac44a962e609e9b042285e699d1db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs in a loop during test mode.  <a href="#af0ac44a962e609e9b042285e699d1db8">More...</a><br /></td></tr>
 <tr class="separator:af0ac44a962e609e9b042285e699d1db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3296010d65fa60410be1eeaa72f37dc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobot.html#a3296010d65fa60410be1eeaa72f37dc0">SetCycleTime</a> (double seconds)</td></tr>
+<tr class="separator:a3296010d65fa60410be1eeaa72f37dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5b0f9e87dc1d843546bb51e337ccdb5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobot.html#ae5b0f9e87dc1d843546bb51e337ccdb5">GetCycleTime</a> ()</td></tr>
+<tr class="separator:ae5b0f9e87dc1d843546bb51e337ccdb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -158,6 +162,8 @@ Static Public Attributes</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae8ed06b4ce167235e06332a3463d5399"><td class="memItemLeft" align="right" valign="top">frc::SendableChooser&lt; frc::Command * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobot.html#ae8ed06b4ce167235e06332a3463d5399">m_chooser</a></td></tr>
 <tr class="separator:ae8ed06b4ce167235e06332a3463d5399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c0b2a2ba36fe07debbbc35c34744aa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobot.html#ae3c0b2a2ba36fe07debbbc35c34744aa">cycleTime</a> = 0.02</td></tr>
+<tr class="separator:ae3c0b2a2ba36fe07debbbc35c34744aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main robot class that is called by wpilib. </p>
@@ -283,6 +289,25 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae5b0f9e87dc1d843546bb51e337ccdb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b0f9e87dc1d843546bb51e337ccdb5">&#9670;&nbsp;</a></span>GetCycleTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Robot::GetCycleTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current cycle time</p>
+<dl class="section return"><dt>Returns</dt><dd>Current time gap between cycles in seconds </dd></dl>
+
+</div>
+</div>
 <a id="a66f23dae271748d525cf3ab046375f79"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66f23dae271748d525cf3ab046375f79">&#9670;&nbsp;</a></span>RobotInit()</h2>
 
@@ -340,6 +365,31 @@ Private Attributes</h2></td></tr>
 <p>This runs after the mode specific periodic functions, but before LiveWindow and SmartDashboard integrated updating. </p>
 
 <p class="definition">Definition at line <a class="el" href="Robot_8cpp_source.html#l00043">43</a> of file <a class="el" href="Robot_8cpp_source.html">Robot.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3296010d65fa60410be1eeaa72f37dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3296010d65fa60410be1eeaa72f37dc0">&#9670;&nbsp;</a></span>SetCycleTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::SetCycleTime </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Used to set the amount of time between each cycle of the periodic functions. WARNING: Anything below 0.01 will cause the motor controllers to stop working correctly in some cases</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seconds</td><td>Time gap between cycles in seconds </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -431,6 +481,30 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae3c0b2a2ba36fe07debbbc35c34744aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c0b2a2ba36fe07debbbc35c34744aa">&#9670;&nbsp;</a></span>cycleTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Robot::cycleTime = 0.02</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Robot_8h_source.html#l00058">58</a> of file <a class="el" href="Robot_8h_source.html">Robot.h</a>.</p>
+
+</div>
+</div>
 <a id="ae8ed06b4ce167235e06332a3463d5399"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8ed06b4ce167235e06332a3463d5399">&#9670;&nbsp;</a></span>m_chooser</h2>
 
@@ -451,7 +525,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Robot_8h_source.html#l00040">40</a> of file <a class="el" href="Robot_8h_source.html">Robot.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Robot_8h_source.html#l00056">56</a> of file <a class="el" href="Robot_8h_source.html">Robot.h</a>.</p>
 
 </div>
 </div>

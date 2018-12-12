@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['tankdrive',['TankDrive',['../classDriveTrain.html#a6a4f2dceef2730b2cded41f143e90037',1,'DriveTrain']]],
-  ['teleopinit',['TeleopInit',['../classRobot.html#aa3e246794bfbbb4406fc87f351762038',1,'Robot']]],
-  ['teleopperiodic',['TeleopPeriodic',['../classRobot.html#a324322627c63b3870daf7c7ddc5bea63',1,'Robot']]],
-  ['testperiodic',['TestPeriodic',['../classRobot.html#af0ac44a962e609e9b042285e699d1db8',1,'Robot']]]
+  ['setcycletime',['SetCycleTime',['../classRobot.html#a3296010d65fa60410be1eeaa72f37dc0',1,'Robot::SetCycleTime()'],['../Robot_8cpp.html#a69f41f54bb05867354988572dd8e1f12',1,'SetCycleTime():&#160;Robot.cpp']]]
 ];
