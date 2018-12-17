@@ -9,8 +9,6 @@ DriveTrain *Robot::m_DriveTrain;
 OI *Robot::m_oi;
 
 void Robot::RobotInit() {
-  // Print out a banner to the shell
-  // Some backslashes are doubled in order for them to print properly
   std::cout << "   Welcome 5024!" << std::endl;
   std::cout << "-------------------" << std::endl;
   std::cout << "Robot Starting.."<< std::endl;
