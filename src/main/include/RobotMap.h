@@ -22,6 +22,13 @@
 #define DRIVETRAIN_RIGHT_FRONT_MOTOR_INVERT true
 #define DRIVETRAIN_RIGHT_REAR_MOTOR_INVERT  true
 
+// Talon Mode Settings
+const int SLOT_INDEX = 0;
+const int PID_LOOP_INDEX = 0;
+const int TIMEOUT_MS = 100;
+const int BASE_TRAJECTORY_PERIOD_MS = 0;
+const int NEUTRAL_DEADBAND_PERCENT = 1;
+
 // Motion Profiling
 #define MP_TIME_STEP        0.001 // Time step
 #define MP_MAX_VELOCITY     15.0  // m/s

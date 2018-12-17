@@ -5,7 +5,7 @@
 DriveWithJoystick::DriveWithJoystick() {
   // Use Requires() here to declare subsystem dependencies
   Requires(Robot::m_DriveTrain);
-  this->pJoyDrive = Robot::m_oi->GetJoystickDrive();
+  this->pJoyDrive = Robot::m_OI->GetJoystickDrive();
 }
 
 // Called just before this Command runs the first time

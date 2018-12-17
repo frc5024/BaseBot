@@ -6,23 +6,30 @@
 #include <ctre/Phoenix.h>
 #include <Drive/DifferentialDrive.h>
 #include "RobotMap.h"
-#include <Commands/DriveWithJoystick.h>
+#include "Commands/DriveWithJoystick.h"
 
-class DriveTrain : public frc::Subsystem {
- public:
-  DriveTrain();
-  void InitDefaultCommand() override;
+class DriveTrain : public frc::Subsystem
+{
+  public:
+	DriveTrain();
+	void InitDefaultCommand() override;
+	void InitMotionProfilingMode(void);
 
-  void ArcadeDrive(double xSpeed, double zRotation);
+	void ArcadeDrive(double xSpeed, double zRotation);
 	void TankDrive(double leftSpeed, double rightSpeed);
 
- private:
-  can::WPI_TalonSRX* pLeftFrontMotor;
-	can::WPI_TalonSRX* pLeftRearMotor;
-	can::WPI_TalonSRX* pRightFrontMotor;
-	can::WPI_TalonSRX* pRightRearMotor;
+	void ResetDrive(void);
 
-	frc::DifferentialDrive* pRobotDrive;
+	can::WPI_TalonSRX *GetLeftFrontMotor();
+	can::WPI_TalonSRX *GetRightFrontMotor();
+
+  private:
+	can::WPI_TalonSRX *pLeftFrontMotor;
+	can::WPI_TalonSRX *pLeftRearMotor;
+	can::WPI_TalonSRX *pRightFrontMotor;
+	can::WPI_TalonSRX *pRightRearMotor;
+
+	frc::DifferentialDrive *pRobotDrive;
 };
 
 #endif // _DRIVETRAIN_HG_

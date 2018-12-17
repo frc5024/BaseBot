@@ -4,35 +4,27 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <iostream>
 
+#include "Utilities/Log.h"
+
+#include "MotionProfile/CommandGroups/TestCommandGroup.h"
+
 // Subsystems
 DriveTrain *Robot::m_DriveTrain;
-OI *Robot::m_oi;
+OI *Robot::m_OI;
 
-void Robot::RobotInit() {
-  // Print out a banner to the shell
-  // Some backslashes are doubled in order for them to print properly
-  std::cout << \
-"   _______    ______    ______   __    __       \n"\
-"/       |  /      \\  /      \\ /  |  /  |      \n"\
-"$$$$$$$/  /$$$$$$  |/$$$$$$  |$$ |  $$ |      \n"\
-"$$ |____  $$$  \\$$ |$$____$$ |$$ |__$$ |      \n"\
-"$$      \\ $$$$  $$ | /    $$/ $$    $$ |      \n"\
-"$$$$$$$  |$$ $$ $$ |/$$$$$$/  $$$$$$$$ |      \n"\
-"/  \\__$$ |$$ \\$$$$ |$$ |_____       $$ |      \n"\
-"$$    $$/ $$   $$$/ $$       |      $$ |      \n"\
-" $$$$$$/   $$$$$$/  $$$$$$$$/       $$/    \n"\
-"Robot Starting.."<< std::endl;
-
+void Robot::RobotInit()
+{
   // Subsystems
+  LOG("Initializing Subsystems...");
   this->m_DriveTrain = new DriveTrain();
-  this->m_oi = new OI();
+  this->m_OI = new OI();
 
   // Init camera
-  std::cout << "Starting CameraServer.." << std::endl;
-	CameraServer::GetInstance()->StartAutomaticCapture();
-	
-	// Init commands
-  std::cout << "Creating Commands.." << std::endl;
+  LOG("Starting CameraServer...");
+  // CameraServer::GetInstance()->StartAutomaticCapture();
+
+  // Init commands
+  LOG("Creating Commands...");
   this->pDriveWithJoystick = new DriveWithJoystick();
 }
 
@@ -66,37 +58,36 @@ void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
  * chooser code above (like the commented example) or additional comparisons to
  * the if-else structure below with additional strings & commands.
  */
-void Robot::AutonomousInit() {
-  // std::string autoSelected = frc::SmartDashboard::GetString(
-  //     "Auto Selector", "Default");
-  // if (autoSelected == "My Auto") {
-  //   m_autonomousCommand = &m_myAuto;
-  // } else {
-  //   m_autonomousCommand = &m_defaultAuto;
-  // }
+void Robot::AutonomousInit()
+{
+  LOG("[Robot] Autonomous Initialized");
 
-  // m_autonomousCommand = m_chooser.GetSelected();
-
-  // if (m_autonomousCommand != nullptr) {
-  //   m_autonomousCommand->Start();
-  // }
+  pAutonomousCommand = new TestCommandGroup();
+  pAutonomousCommand->Start();
 }
 
-void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::AutonomousPeriodic() 
+{ 
+  frc::Scheduler::GetInstance()->Run(); 
+}
 
-void Robot::TeleopInit() {
+/**
+ * 
+ */
+void Robot::TeleopInit()
+{
   // This makes sure that the autonomous stops running when
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
-  // if (m_autonomousCommand != nullptr) {
-  //   m_autonomousCommand->Cancel();
-  //   m_autonomousCommand = nullptr;
-  // }
+  if (pAutonomousCommand != nullptr) {
+    pAutonomousCommand->Cancel();
+    pAutonomousCommand = nullptr;
+  }
 
   if (this->pDriveWithJoystick != nullptr) {
-		this->pDriveWithJoystick->Start();
-	}
+    this->pDriveWithJoystick->Start();
+  }
 }
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
