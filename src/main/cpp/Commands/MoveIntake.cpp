@@ -7,10 +7,13 @@
 
 #include <Commands/MoveIntake.h>
 
+#include "Robot.h"
+
 MoveIntake::MoveIntake() {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
-  Requires(Robot::m_Intake.get());
+  Requires(Robot::m_Intake);
+  this->pJoyDrive = Robot::m_oi->GetJoystickDrive();
 }
 
 // Called just before this Command runs the first time

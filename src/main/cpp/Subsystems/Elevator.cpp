@@ -10,7 +10,7 @@
 
 
 Elevator::Elevator() : Subsystem("Elevator Subsystem") {
-  
+  this->pElevatorMotor = new WPI_TalonSRX(ELEVATOR_MOTOR_ID);
 
 }
 

@@ -7,9 +7,11 @@
 
 #include "Commands/DriveWithJoystick.h"
 #include "Commands/MoveElevator.h"
+#include "Commands/MoveIntake.h"
 #include "OI.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Elevator.h"
+#include "Subsystems/Intake.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -17,10 +19,12 @@ class Robot : public frc::TimedRobot {
   static DriveTrain *m_DriveTrain;
   static OI *m_oi;
   static Elevator *m_Elevator;
+  static Intake *m_Intake;
 
 	// Commands
   DriveWithJoystick* pDriveWithJoystick;
   MoveElevator* pMoveElevator;
+  MoveIntake* pMoveIntake;
 
 
 	// Robot methods

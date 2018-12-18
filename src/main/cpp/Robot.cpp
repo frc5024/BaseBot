@@ -8,6 +8,7 @@
 DriveTrain *Robot::m_DriveTrain;
 OI *Robot::m_oi;
 Elevator *Robot::m_Elevator;
+Intake *Robot::m_Intake;
 
 void Robot::RobotInit() {
   // Print out a banner to the shell
@@ -27,6 +28,8 @@ void Robot::RobotInit() {
   // Subsystems
   this->m_DriveTrain = new DriveTrain();
   this->m_oi = new OI();
+  this->m_Elevator = new Elevator();
+  this->m_Intake = new Intake();
 
   // Init camera
   std::cout << "Starting CameraServer.." << std::endl;
@@ -35,6 +38,8 @@ void Robot::RobotInit() {
 	// Init commands
   std::cout << "Creating Commands.." << std::endl;
   this->pDriveWithJoystick = new DriveWithJoystick();
+  this->pMoveElevator = new MoveElevator();
+  this->pMoveIntake = new MoveIntake();
 }
 
 /**
@@ -98,6 +103,8 @@ void Robot::TeleopInit() {
   if (this->pDriveWithJoystick != nullptr) {
 		this->pDriveWithJoystick->Start();
 	}
+  
+
 }
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }

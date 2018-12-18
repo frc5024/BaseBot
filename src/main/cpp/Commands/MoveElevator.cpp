@@ -30,7 +30,7 @@ void MoveElevator::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void MoveElevator::Execute() {
   this->pos = pJoyDrive->GetTriggerAxis(XboxController::kLeftHand);
-  this->neg = pJoyDrive->GetTriggerAxis(XboxController::kRightHand);
+  this->neg = pJoyDrive->GetTriggerAxis(XboxController::kRightHand) * -1;
 
   this->speed = pos + neg;
 
