@@ -2,11 +2,13 @@
 #include <iostream>
 
 TelemetryController(){
-	// There is nothing to do here right now, so let's just print out something useless
+	this->controlData = {0,0,0,0};
+	// this->lastControlData not set here to stop lock on first publish
+	
 	std::cout << "A telemetry controller has been initalized" << std::endl;
 }
 
 void TelemetryController::SetState(ControlData::ControlValue state){
-	
+	this->controlData[state.index] = state.value;
 }
 
