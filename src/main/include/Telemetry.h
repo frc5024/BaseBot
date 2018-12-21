@@ -1,37 +1,31 @@
 //! Tools for working with telemetry data
 #include <WPILib.h>
 
-// | 1 | 2 | 3 | 4 |
-
 namespace Telemetry{
 	namespace ControlData{
+		typedef enum RobotState{ //!< Current state of the robot
+			Disabled = 0,
+			Enabled  = 1
+		} RobotState;
 		
+		typedef enum RobotMode{ //!< Current mode of the robot
+			Auto     = 0,
+			Teleop   = 1,
+			Practice = 2,
+			Test     = 3
+		} RobotMode;
 		
-		// OLD
-		// A blank value struct
-		struct ControlValue{
-			int index;
-			int value;
-		}
+		typedef enum RIO{ //!< Current state of the RoboRIO
+			Unready = 0,
+			Ready   = 1,
+			Fault   = 2
+		} RIO;
 		
-		// All possible values
-		
-		// Robot States
-		ControlValue Enabled  = {0,1}; //!< Robot enabled
-		ControlValue Disabled = {0,0}; //!< Robot disabled
-		
-		// Robot Modes
-		ControlValue Autonomous = {1,0}; //!< AUTO mode
-		ControlValue Teleop     = {1,1}; //!< TELEOP mode
-		ControlValue Practice   = {1,2}; //!< PRACTICE mode
-		ControlValue Test       = {1,3}; //!< TEST mode
-		
-		// Readys
-		ControlValue RIOready   = {2,1}; //!< RoboRIO is ready
-		ControlValue RIOunready = {2,0}; //!< RoboRIO is not ready
-		
-		ControlValue PIready   = {3,1}; //!< RaspberryPI is ready
-		ControlValue PIunready = {3,0}; //!< RaspberryPI is not ready
+		typedef enum RPI{ //!< Current state of the RaspberryPI
+			Unready = 0,
+			Ready   = 1,
+			Fault   = 2
+		} RPI;
 	}
 	
 	class TelemetryController{
